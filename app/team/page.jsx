@@ -4,7 +4,6 @@ import React from "react";
 
 function team() {
   const data = useSession();
-  console.log(data);
   return <div></div>;
 }
 

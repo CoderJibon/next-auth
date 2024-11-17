@@ -1,21 +1,19 @@
+import { ServerApiVersion } from "mongodb";
 import { MongoClient } from "mongodb";
-
-if (!process.env.MONGODB_URI) {
-  throw new Error('Invalid/Missing environment variable: "MONGODB_URI"');
-}
 
 const uri = process.env.MONGODB_URI;
 const options = {
-  serverApi: {},
+  serverApi: {
+    version: ServerApiVersion.v1,
+    strict: true,
+    deprecationErrors: true,
+  },
 };
-// version: ServerApiVersion.v1,
-// strict: true,
-// deprecationErrors: true,
 
 let client;
 let clientPromise;
 
-if (process.env.MONGODB_URI) {
+if (!process.env.MONGODB_URI) {
   throw new Error(`Invalid/Missing environment variable: "MONGODB_URI`);
 }
 if (process.env.MONGODB_URI === "development") {
